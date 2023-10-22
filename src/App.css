@@ -1,0 +1,42 @@
+.imgNabar {
+  width: 50px;
+}
+.img-banner {
+  width: 100%;
+  height: auto;
+}
+.bg-dark {
+  background-color: #1f1f1f !important;
+}
+li {
+  list-style-type: "🍕";
+}
+
+.name {
+  text-transform: uppercase;
+}
+.img-product {
+  width: 100%;
+  max-width: 300px;
+
+  display: block;
+  object-fit: cover;
+}
+
+.list-cart {
+  width: 100%;
+  max-width: 100px;
+
+  display: block;
+  object-fit: cover;
+}
+.list {
+  list-style: none !important;
+}
+
+.img404 {
+  width: 100%;
+  max-width: 700px;
+}
+
+

@@ -1,0 +1,104 @@
+import React from "react";
+import { useContext } from "react";
+import { DataContext } from "../contexts/DataContexts";
+import Button from "react-bootstrap/Button";
+import Navbarapp from "../components/Navbarapp";
+import Swal from "sweetalert2";
+
+
+const Cart = () => {
+  const { cart, setCart } = useContext(DataContext);
+
+  const removeCart = (productId) => {
+    const updatedCart = [...cart];
+    const productIndex = updatedCart.findIndex((item) => item.id === productId);
+
+    if (productIndex !== -1) {
+      if (updatedCart[productIndex].quantity > 1) {
+        updatedCart[productIndex].quantity--;
+      } else {
+        updatedCart.splice(productIndex, 1);
+      }
+      setCart(updatedCart);
+    }
+  };
+  const addCartList = (productId) => {
+    const updatedCart = [...cart];
+    const productIndex = updatedCart.findIndex((item) => item.id === productId);
+    updatedCart[productIndex].quantity++;
+    setCart(updatedCart);
+  };
+
+  return (
+    <div className="justify-content-center">
+      <Navbarapp />
+      <div className="d-flex justify-content-center">
+        <h1>Detalle del Pedido</h1>
+      </div>
+      <div className="d-flex justify-content-center ">
+        <div className="d-flex justify-content-center flex-column align-items-start">
+          {cart.map((product) => (
+            <li  className="list" key={product.id}>
+              <div className="d-flex mt-5 align-items-center justify-content-center mx-5">
+                <img
+                  className="list-cart my-2 mx-5 "
+                  src={product.img}
+                  alt="shopping cart images"
+                ></img>
+                <div>
+                  {product.name.toUpperCase()} <br></br>Precio: {product.price}
+                </div>
+                <div className="d-flex  align-items-center ms-5">
+                  <Button
+                    variant="danger"
+                    onClick={() => removeCart(product.id)}
+                  >
+                    🛒
+                  </Button>
+                  Cantidad: {product.quantity}
+                  <Button
+                    variant="primary"
+                    onClick={() => addCartList(product.id)}
+                  >
+                    🛒
+                  </Button>
+                </div>
+              </div>
+            </li>
+          ))}
+        </div>
+      </div>
+
+      <div className="d-flex justify-content-center mt-5">
+        <Button
+          variant="success"
+          onClick={() => {
+            if (cart != 0) {
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Gracias por su compra",
+                timer: 3000,
+                showClass: {
+                  popup: "animate__animated animate__fadeInDown",
+                },
+                hideClass: {
+                  popup: "animate__animated animate__fadeOutUp",
+                },
+              });
+            } else {
+              Swal.fire({
+                icon: "error",
+                title: "🍕 Elige una rica  Pizza MAMMA MIA  primero 🍕",
+                timer: 3000,
+              });
+            }
+          }}
+        >
+          Pagar
+        </Button>
+      </div>
+    </div>
+  );
+};
+export default Cart;
