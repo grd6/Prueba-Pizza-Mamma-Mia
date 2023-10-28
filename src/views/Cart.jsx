@@ -4,11 +4,15 @@ import { DataContext } from "../contexts/DataContexts";
 import Button from "react-bootstrap/Button";
 import Navbarapp from "../components/Navbarapp";
 import Swal from "sweetalert2";
-
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const { cart, setCart } = useContext(DataContext);
+  const Navigate = useNavigate();
 
+  const redirectHome = () => {
+    Navigate(`/`);
+  };
   const removeCart = (productId) => {
     const updatedCart = [...cart];
     const productIndex = updatedCart.findIndex((item) => item.id === productId);
@@ -38,7 +42,7 @@ const Cart = () => {
       <div className="d-flex justify-content-center ">
         <div className="d-flex justify-content-center flex-column align-items-start">
           {cart.map((product) => (
-            <li  className="list" key={product.id}>
+            <li className="list" key={product.id}>
               <div className="d-flex mt-5 align-items-center justify-content-center mx-5">
                 <img
                   className="list-cart my-2 mx-5 "
@@ -90,8 +94,9 @@ const Cart = () => {
               Swal.fire({
                 icon: "error",
                 title: "🍕 Elige una rica  Pizza MAMMA MIA  primero 🍕",
+                confirmButtonText:"OK",
                 timer: 3000,
-              });
+              },Navigate("/"));
             }
           }}
         >

@@ -15,9 +15,9 @@ const Products = () => {
   return (
     <>
       <ToastContainer />
-      {data.map((product) => {
+      {data.map((product,i) => {
         return (
-          <div className="p-2">
+          <div key={i} className="p-2">
             <Card style={{ width: "18rem" }}>
               <Card.Img variant="top" src={product.img} />
               <Card.Body>
