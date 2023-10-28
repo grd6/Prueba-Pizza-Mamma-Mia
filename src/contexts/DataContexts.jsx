@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const DataContext = createContext();
 
-const data_Url = "/public/pizzas.json";
+const data_Url = "./pizzas.json";
 
 const DataProvider = ({ children }) => {
   const [data, setData] = useState([]);
