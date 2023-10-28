@@ -29,12 +29,10 @@ const Navbarapp = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Nav>
             <NavLink to="/Cart" className={setActiveClass}>
-              <div className="d-flex">
-                <h5> 
-                  <BsCart4 className="icon-navbar" />
-                </h5>
+              <div className="">
+               
                 <div>
-                  <h5>Monto: {TotalPrice()}</h5>
+                  <h5>Monto: ${TotalPrice().toLocaleString("es-CL")}</h5>
                 </div>
               </div>
             </NavLink>

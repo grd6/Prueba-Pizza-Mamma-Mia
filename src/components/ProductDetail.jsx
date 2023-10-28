@@ -73,7 +73,7 @@ const ProductDetail = () => {
                   </ul>
                   <hr></hr>
                   <div className="">
-                    <h3>$ {product.price}</h3>
+                    <h3>$ {(product.price).toLocaleString("es-CL")}</h3>
                   </div>
                 </Card.Text>
 

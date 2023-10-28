@@ -30,7 +30,7 @@ const Products = () => {
                   ))}
                   <hr></hr>
                   <div className="d-flex justify-content-center">
-                    <h3>$ {product.price}</h3>
+                    <h3>$ {((product.price).toLocaleString("es-CL"))}</h3>
                   </div>
                 </Card.Text>
                 <Button

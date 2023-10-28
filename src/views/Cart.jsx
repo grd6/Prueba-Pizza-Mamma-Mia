@@ -22,7 +22,8 @@ const Cart = () => {
         updatedCart[productIndex].quantity--;
       } else {
         updatedCart.splice(productIndex, 1);
-      }
+      
+      }  
       setCart(updatedCart);
     }
   };
@@ -50,12 +51,13 @@ const Cart = () => {
                   alt="shopping cart images"
                 ></img>
                 <div>
-                  {product.name.toUpperCase()} <br></br>Precio: {product.price}
+                  {product.name.toUpperCase()} <br></br>Precio: {(product.price).toLocaleString("es-CL")}
                 </div>
                 <div className="d-flex  align-items-center ms-5">
                   <Button
                     variant="danger"
                     onClick={() => removeCart(product.id)}
+                   
                   >
                     🛒
                   </Button>
@@ -91,12 +93,15 @@ const Cart = () => {
                 },
               });
             } else {
-              Swal.fire({
-                icon: "error",
-                title: "🍕 Elige una rica  Pizza MAMMA MIA  primero 🍕",
-                confirmButtonText:"OK",
-                timer: 3000,
-              },Navigate("/"));
+              Swal.fire(
+                {
+                  icon: "error",
+                  title: "🍕 Elige una rica  Pizza MAMMA MIA  primero 🍕",
+                  confirmButtonText: "OK",
+                  timer: 3000,
+                },
+                Navigate("/")
+              );
             }
           }}
         >
